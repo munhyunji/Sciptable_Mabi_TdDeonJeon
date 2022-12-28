@@ -1,0 +1,33 @@
+<html>
+    <body>
+       <table class="table centertable dungeonTable">
+           <thead>
+            <tr>
+               <th>오늘</th>
+               <th>내일</th>
+               
+            </tr>
+           </thead>
+           <tbody>
+             <tr>
+                        
+             </tr>
+          </tbody>
+       </table>
+   </body>
+   
+   </html>
+   <script>
+        
+            var datum = moment(new Date(2019, 07, 30, 07, 00, 00));
+            var SeoulTime = moment(new Date());
+            SeoulTime.tz("Asia/Seoul").format();
+            var diff = Math.floor(moment.duration(SeoulTime.diff(datum)).asDays() % 9);
+            var dungeon = ["라비", "마스", "피오드", "바리", "코일", "룬다", "페카", "알비", "키아"];
+            var j = 0;
+            for (var i = diff; i < diff + 2; i++) {
+                $(".dungeonTable tbody tr").append("<td data-th='" + $(".dungeonTable tr th").eq(j).text() + "' data-hd=''>" + dungeon[Math.floor(i % dungeon.length)] + "</td>");
+               j++;
+            }
+         
+   </script>
